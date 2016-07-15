@@ -18,8 +18,8 @@ func init() {
 		os.Exit(1)
 	}
 
-	accountingFile = fmt.Sprintf("%s/%s/accounting", sgeroot, sgecell)
-	reportingFile = fmt.Sprintf("%s/%s/reporting", sgeroot, sgecell)
+	accountingFile = fmt.Sprintf("%s/%s/common/accounting", sgeroot, sgecell)
+	reportingFile = fmt.Sprintf("%s/%s/common/reporting", sgeroot, sgecell)
 
 }
 
