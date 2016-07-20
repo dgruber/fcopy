@@ -38,7 +38,12 @@ func main() {
 		if printToFiles {
 			for i := 1; i < len(os.Args); i++ {
 				if file, errOpen := os.OpenFile(os.Args[i], os.O_APPEND|os.O_WRONLY, 0600); errOpen != nil {
-					fmt.Printf("%s Error opening file %s: %s\n", time.Now(), os.Args[i], errOpen)
+					if f, errCreate := os.Create(os.Args[i]); errCreate != nil {
+						fmt.Printf("%s Error opening file %s: %s\n", time.Now(), os.Args[i], errOpen)
+					} else {
+						f.WriteString(line.Text + "\n")
+						f.Close() // by purpose
+					}
 				} else {
 					file.WriteString(line.Text + "\n")
 					file.Close() // by purpose
